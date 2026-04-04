@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "name": "stegoproxy-license-api",
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/validate-license",
+      "dest": "/api/validate-license.js"
+    },
+    {
+      "src": "/api/check-license",
+      "dest": "/api/validate-license.js"
+    },
+    {
+      "src": "/api/revoke-license",
+      "dest": "/api/validate-license.js"
+    },
+    {
+      "src": "/api/license-stats",
+      "dest": "/api/validate-license.js"
+    },
+    {
+      "src": "/api/beacon",
+      "dest": "/api/beacon.js"
+    },
+    {
+      "src": "/api/beacon-events",
+      "dest": "/api/beacon.js"
+    },
+    {
+      "src": "/api/beacon-stats",
+      "dest": "/api/beacon.js"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@stegoproxy-db-url",
+    "ADMIN_MASTER_KEY": "@stegoproxy-admin-key"
+  }
+}
