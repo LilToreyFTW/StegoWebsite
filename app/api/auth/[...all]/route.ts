@@ -7,4 +7,18 @@
 import { auth } from "@/lib/auth";
 
 // Export the Better Auth handler for all /api/auth/* routes
-export const { GET, POST, PUT, DELETE } = auth.handler;
+export async function GET(request: Request) {
+  return auth.handler(request);
+}
+
+export async function POST(request: Request) {
+  return auth.handler(request);
+}
+
+export async function PUT(request: Request) {
+  return auth.handler(request);
+}
+
+export async function DELETE(request: Request) {
+  return auth.handler(request);
+}
