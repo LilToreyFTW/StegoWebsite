@@ -36,9 +36,5 @@
       "src": "/api/beacon-stats",
       "dest": "/api/beacon.js"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "@stegoproxy-db-url",
-    "ADMIN_MASTER_KEY": "@stegoproxy-admin-key"
-  }
+  ]
 }
