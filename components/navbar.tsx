@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Show, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Shield, Menu, X } from "lucide-react";
 import { useState } from "react";
 // Better Auth v1.5.6 imports - runs alongside Clerk
@@ -35,7 +35,7 @@ export function Navbar() {
 
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <Show key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
+            <SignedOut key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
               <Link
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -45,7 +45,7 @@ export function Navbar() {
                 {link.label}
               </Link>
             ) : isBetterAuthSignedIn ? (
-              // Better Auth v1.5.6: Show nav links for protected routes when signed in with Better Auth
+              // Better Auth v1.5.6: SignedOut nav links for protected routes when signed in with Better Auth
               <Link
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -63,13 +63,13 @@ export function Navbar() {
               >
                 {link.label}
               </Link>
-            </Show>
+            </SignedOut>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Show when="signed-out">
-            {/* Better Auth v1.5.6: Show alternative sign in when not signed in with either system */}
+          <SignedOut when="signed-out">
+            {/* Better Auth v1.5.6: SignedOut alternative sign in when not signed in with either system */}
             {isBetterAuthSignedIn ? (
               <BetterAuthUserButton afterSignOutUrl="/" />
             ) : (
@@ -86,15 +86,15 @@ export function Navbar() {
                 </Link>
               </>
             )}
-          </Show>
-          <Show when="signed-in">
+          </SignedOut>
+          <SignedIn>
             <UserButton afterSignOutUrl="/" />
-          </Show>
-          {/* Better Auth v1.5.6: Show Better Auth user button when signed in with Better Auth but not Clerk */}
+          </SignedIn>
+          {/* Better Auth v1.5.6: SignedOut Better Auth user button when signed in with Better Auth but not Clerk */}
           {!isBetterAuthSignedIn && (
-            <Show when="signed-out">
+            <SignedOut when="signed-out">
               <></>
-            </Show>
+            </SignedOut>
           )}
           {isBetterAuthSignedIn && (
             <BetterAuthUserButton afterSignOutUrl="/" />
@@ -113,7 +113,7 @@ export function Navbar() {
         <div className="md:hidden border-t border-border bg-background">
           <div className="container px-4 py-4 space-y-4">
             {navLinks.map((link) => (
-              <Show key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
+              <SignedOut key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
                 <Link
                   href={link.href}
                   className={`block text-sm font-medium ${
@@ -124,7 +124,7 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ) : isBetterAuthSignedIn ? (
-                // Better Auth v1.5.6: Mobile nav for protected routes when signed in with Better Auth
+                // Better Auth v1.5.6: SignedOut Mobile nav for protected routes when signed in with Better Auth
                 <Link
                   href={link.href}
                   className={`block text-sm font-medium ${
@@ -144,11 +144,11 @@ export function Navbar() {
                 >
                   {link.label}
                 </Link>
-              </Show>
+              </SignedOut>
             ))}
             <div className="pt-4 border-t border-border">
-              <Show when="signed-out">
-                {/* Better Auth v1.5.6: Mobile auth options */}
+              <SignedOut>
+                {/* Better Auth v1.5.6: SignedOut Mobile auth options */}
                 {isBetterAuthSignedIn ? (
                   <BetterAuthUserButton afterSignOutUrl="/" />
                 ) : (
@@ -165,11 +165,11 @@ export function Navbar() {
                     </Link>
                   </div>
                 )}
-              </Show>
-              <Show when="signed-in">
+              </SignedOut>
+              <SignedIn>
                 <UserButton afterSignOutUrl="/" />
-              </Show>
-              {/* Better Auth v1.5.6: Show Better Auth user button when signed in with Better Auth but not Clerk */}
+              </SignedIn>
+              {/* Better Auth v1.5.6: SignedOut Better Auth user button when signed in with Better Auth but not Clerk */}
               {isBetterAuthSignedIn && (
                 <BetterAuthUserButton afterSignOutUrl="/" />
               )}
