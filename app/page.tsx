@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Show, SignUpButton, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignUpButton, SignInButton } from "@clerk/nextjs";
 import { Shield, FileKey, Globe, Eye, ArrowRight, Coffee } from "lucide-react";
 
 export default function WelcomePage() {
@@ -24,7 +24,7 @@ export default function WelcomePage() {
               Secure your files with invisible tracking and world-class proxy protection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Show when="signed-out">
+              <SignedOut>
                 <SignUpButton mode="modal">
                   <button className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
                     Get Started <ArrowRight className="h-4 w-4" />
@@ -35,8 +35,8 @@ export default function WelcomePage() {
                     Sign In
                   </button>
                 </SignInButton>
-              </Show>
-              <Show when="signed-in">
+              </SignedOut>
+              <SignedIn>
                 <Link
                   href="/dashboard"
                   className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
@@ -49,7 +49,7 @@ export default function WelcomePage() {
                 >
                   Buy Keys
                 </Link>
-              </Show>
+              </SignedIn>
             </div>
           </div>
         </div>
