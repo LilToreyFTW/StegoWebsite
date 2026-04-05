@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { SignedIn, SignedOut, SignUpButton, SignInButton } from "@clerk/nextjs";
 import { Shield, FileKey, Globe, Eye, ArrowRight, Coffee } from "lucide-react";
 
 export default function WelcomePage() {
@@ -24,32 +23,18 @@ export default function WelcomePage() {
               Secure your files with invisible tracking and world-class proxy protection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <SignedOut>
-                <SignUpButton mode="modal">
-                  <button className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
-                    Get Started <ArrowRight className="h-4 w-4" />
-                  </button>
-                </SignUpButton>
-                <SignInButton mode="modal">
-                  <button className="rounded-md border border-border bg-secondary px-6 py-3 text-base font-medium hover:bg-secondary/80 transition-colors">
-                    Sign In
-                  </button>
-                </SignInButton>
-              </SignedOut>
-              <SignedIn>
-                <Link
-                  href="/dashboard"
-                  className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
-                >
-                  Go to Dashboard <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/buy-keys"
-                  className="rounded-md border border-border bg-secondary px-6 py-3 text-base font-medium hover:bg-secondary/80 transition-colors"
-                >
-                  Buy Keys
-                </Link>
-              </SignedIn>
+              <Link
+                href="/sign-in"
+                className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+              >
+                Get Started <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/buy-keys"
+                className="rounded-md border border-border bg-secondary px-6 py-3 text-base font-medium hover:bg-secondary/80 transition-colors"
+              >
+                Buy Keys
+              </Link>
             </div>
           </div>
         </div>
