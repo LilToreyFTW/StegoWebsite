@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Shield, Menu, X } from "lucide-react";
 import { useState } from "react";
 // Better Auth v1.5.6 imports - runs alongside Clerk
@@ -48,36 +47,21 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <SignedOut>
-            {/* Better Auth v1.5.6: SignedOut alternative sign in when not signed in with either system */}
-            {isBetterAuthSignedIn ? (
-              <BetterAuthUserButton afterSignOutUrl="/" />
-            ) : (
-              <>
-                <Link href="/sign-in">
-                  <button className="w-24 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                    Sign In
-                  </button>
-                </Link>
-                <Link href="/sign-up">
-                  <button className="w-24 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-                    Sign Up
-                  </button>
-                </Link>
-              </>
-            )}
-          </SignedOut>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
-          {/* Better Auth v1.5.6: SignedOut Better Auth user button when signed in with Better Auth but not Clerk */}
-          {!isBetterAuthSignedIn && (
-            <SignedOut>
-              <></>
-            </SignedOut>
-          )}
-          {isBetterAuthSignedIn && (
+          {isBetterAuthSignedIn ? (
             <BetterAuthUserButton afterSignOutUrl="/" />
+          ) : (
+            <>
+              <Link href="/sign-in">
+                <button className="w-24 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Sign In
+                </button>
+              </Link>
+              <Link href="/sign-up">
+                <button className="w-24 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                  Sign Up
+                </button>
+              </Link>
+            </>
           )}
         </div>
 
@@ -105,31 +89,21 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-4 border-t border-border">
-              <SignedOut>
-                {/* Better Auth v1.5.6: SignedOut Mobile auth options */}
-                {isBetterAuthSignedIn ? (
-                  <BetterAuthUserButton afterSignOutUrl="/" />
-                ) : (
-                  <div className="space-y-2">
-                    <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                      <button className="block w-full text-left text-sm font-medium text-muted-foreground">
-                        Sign In
-                      </button>
-                    </Link>
-                    <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
-                      <button className="block w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
-                        Sign Up
-                      </button>
-                    </Link>
-                  </div>
-                )}
-              </SignedOut>
-              <SignedIn>
-                <UserButton afterSignOutUrl="/" />
-              </SignedIn>
-              {/* Better Auth v1.5.6: SignedOut Better Auth user button when signed in with Better Auth but not Clerk */}
-              {isBetterAuthSignedIn && (
+              {isBetterAuthSignedIn ? (
                 <BetterAuthUserButton afterSignOutUrl="/" />
+              ) : (
+                <div className="space-y-2">
+                  <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                    <button className="block w-full text-left text-sm font-medium text-muted-foreground">
+                      Sign In
+                    </button>
+                  </Link>
+                  <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
+                    <button className="block w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+                      Sign Up
+                    </button>
+                  </Link>
+                </div>
               )}
             </div>
           </div>
