@@ -5,20 +5,16 @@
  */
 
 import { betterAuth } from "better-auth";
-import { neon } from "@neondatabase/serverless";
 
 // Better Auth configuration using NeonDB from the existing neondb_api
 // This runs alongside Clerk - both auth systems are available
 export const auth = betterAuth({
-  // Database configuration - uses the same NeonDB as the license API
-  database: {
-    // Using NeonDB serverless client
-    // Connection string should be set in environment variables
-    // DATABASE_URL from the existing neondb_api setup
-    provider: "postgres",
-    url: process.env.DATABASE_URL || "",
-  },
-
+  // Base URL for callbacks and redirects
+  baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+  
+  // Secret for session signing
+  secret: process.env.BETTER_AUTH_SECRET || "default-secret-change-in-production",
+  
   // Authentication providers
   emailAndPassword: {
     enabled: true,
