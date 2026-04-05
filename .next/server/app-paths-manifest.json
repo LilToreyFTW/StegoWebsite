@@ -9,8 +9,8 @@
   "/buy-keys/page": "app/buy-keys/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/sign-in/page": "app/sign-in/page.js",
-  "/page": "app/page.js",
   "/sign-up/page": "app/sign-up/page.js",
+  "/page": "app/page.js",
   "/download/page": "app/download/page.js",
   "/api/beacon/route": "app/api/beacon/route.js",
   "/api/validate-license/route": "app/api/validate-license/route.js"

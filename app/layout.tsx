@@ -22,17 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      {/* Better Auth v1.5.6: Provider runs alongside ClerkProvider */}
-      <BetterAuthProvider>
-        <html lang="en" className="dark">
-          <body className={`${inter.className} bg-background text-foreground min-h-screen`}>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </body>
-        </html>
-      </BetterAuthProvider>
-    </ClerkProvider>
+    <BetterAuthProvider>
+      <html lang="en" className="dark">
+        <body className={`${inter.className} bg-background text-foreground min-h-screen`}>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </BetterAuthProvider>
   );
 }
