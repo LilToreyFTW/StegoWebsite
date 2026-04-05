@@ -35,40 +35,20 @@ export function Navbar() {
 
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <SignedOut key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
-              <Link
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ) : isBetterAuthSignedIn ? (
-              // Better Auth v1.5.6: SignedOut nav links for protected routes when signed in with Better Auth
-              <Link
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ) : null}>
-              <Link
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            </SignedOut>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === link.href ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <SignedOut when="signed-out">
+          <SignedOut>
             {/* Better Auth v1.5.6: SignedOut alternative sign in when not signed in with either system */}
             {isBetterAuthSignedIn ? (
               <BetterAuthUserButton afterSignOutUrl="/" />
@@ -92,7 +72,7 @@ export function Navbar() {
           </SignedIn>
           {/* Better Auth v1.5.6: SignedOut Better Auth user button when signed in with Better Auth but not Clerk */}
           {!isBetterAuthSignedIn && (
-            <SignedOut when="signed-out">
+            <SignedOut>
               <></>
             </SignedOut>
           )}
@@ -113,38 +93,16 @@ export function Navbar() {
         <div className="md:hidden border-t border-border bg-background">
           <div className="container px-4 py-4 space-y-4">
             {navLinks.map((link) => (
-              <SignedOut key={link.href} when={link.protected ? "signed-in" : undefined} fallback={!link.protected ? (
-                <Link
-                  href={link.href}
-                  className={`block text-sm font-medium ${
-                    pathname === link.href ? "text-primary" : "text-muted-foreground"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ) : isBetterAuthSignedIn ? (
-                // Better Auth v1.5.6: SignedOut Mobile nav for protected routes when signed in with Better Auth
-                <Link
-                  href={link.href}
-                  className={`block text-sm font-medium ${
-                    pathname === link.href ? "text-primary" : "text-muted-foreground"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ) : null}>
-                <Link
-                  href={link.href}
-                  className={`block text-sm font-medium ${
-                    pathname === link.href ? "text-primary" : "text-muted-foreground"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </SignedOut>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block text-sm font-medium ${
+                  pathname === link.href ? "text-primary" : "text-muted-foreground"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
             ))}
             <div className="pt-4 border-t border-border">
               <SignedOut>

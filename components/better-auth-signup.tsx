@@ -35,19 +35,20 @@ export function BetterAuthSignUp({ onSuccess, onSwitchToClerk }: BetterAuthSignU
     setError(null);
 
     try {
-      const result = await signUp({
+      const result = await signUp.email({
         name,
         email,
         password,
-        callbackURL: "/dashboard",
+        fetchOptions: {
+          onSuccess: () => {
+            setSuccess(true);
+            onSuccess?.();
+          },
+          onError: (error) => {
+            setError(error.toString() || "Sign up failed");
+          }
+        }
       });
-
-      if (result.error) {
-        setError(result.error.message || "Sign up failed");
-      } else {
-        setSuccess(true);
-        onSuccess?.();
-      }
     } catch (err) {
       setError("An unexpected error occurred");
     } finally {

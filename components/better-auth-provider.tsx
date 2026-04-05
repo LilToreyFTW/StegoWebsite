@@ -19,7 +19,6 @@ export const betterAuthClient = createAuthClient({
 // Export hooks for use in components
 export const {
   useSession,
-  useUser,
   signIn,
   signUp,
   signOut,

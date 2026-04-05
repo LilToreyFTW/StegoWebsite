@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Professional steganography and proxy management system with stealth tracking capabilities.",
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: {

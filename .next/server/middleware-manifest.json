@@ -1,0 +1,93 @@
+{
+  "version": 3,
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge-runtime-webpack.js",
+        "server/middleware.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next|.*\\.[^/]*$).*))(\\.json)?[\\/#\\?]?$",
+          "originalSource": "/((?!_next|.*\\.[^/]*$).*)"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "vXqh3JY3iEJcs4gESLxXd",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "paJ9bBXDn7A5CIxxdH0bd+DX7TxiZBnoXf61kbZzdpQ=",
+        "__NEXT_PREVIEW_MODE_ID": "fc9da36e6e0c42bb462314beb43446ec",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "a1e903c853aa6f2ac6de426c4400ef3924bdf88e567c584dcd5490efeb6ef827",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "86ee5862693acbae558dbb6a6ab870d1c2ab30cc57d07652993302fa8338b691"
+      }
+    }
+  },
+  "functions": {
+    "/api/beacon/route": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/api/beacon/route_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/542.js",
+        "server/app/api/beacon/route.js"
+      ],
+      "name": "app/api/beacon/route",
+      "page": "/api/beacon/route",
+      "matchers": [
+        {
+          "regexp": "^/api/beacon$",
+          "originalSource": "/api/beacon"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "vXqh3JY3iEJcs4gESLxXd",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "paJ9bBXDn7A5CIxxdH0bd+DX7TxiZBnoXf61kbZzdpQ=",
+        "__NEXT_PREVIEW_MODE_ID": "fc9da36e6e0c42bb462314beb43446ec",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "a1e903c853aa6f2ac6de426c4400ef3924bdf88e567c584dcd5490efeb6ef827",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "86ee5862693acbae558dbb6a6ab870d1c2ab30cc57d07652993302fa8338b691"
+      }
+    },
+    "/api/validate-license/route": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/api/validate-license/route_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/542.js",
+        "server/app/api/validate-license/route.js"
+      ],
+      "name": "app/api/validate-license/route",
+      "page": "/api/validate-license/route",
+      "matchers": [
+        {
+          "regexp": "^/api/validate\\-license$",
+          "originalSource": "/api/validate-license"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "vXqh3JY3iEJcs4gESLxXd",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "paJ9bBXDn7A5CIxxdH0bd+DX7TxiZBnoXf61kbZzdpQ=",
+        "__NEXT_PREVIEW_MODE_ID": "fc9da36e6e0c42bb462314beb43446ec",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "a1e903c853aa6f2ac6de426c4400ef3924bdf88e567c584dcd5490efeb6ef827",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "86ee5862693acbae558dbb6a6ab870d1c2ab30cc57d07652993302fa8338b691"
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ]
+}

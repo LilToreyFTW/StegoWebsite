@@ -6,7 +6,7 @@
  * Runs alongside Clerk UserButton - both auth systems coexist
  */
 
-import { useUser, signOut } from "@/components/better-auth-provider";
+import { useSession, signOut } from "@/components/better-auth-provider";
 import { useState } from "react";
 import { User, LogOut, ChevronDown } from "lucide-react";
 
@@ -15,16 +15,21 @@ interface BetterAuthUserButtonProps {
 }
 
 export function BetterAuthUserButton({ afterSignOutUrl = "/" }: BetterAuthUserButtonProps) {
-  const { user, isLoading } = useUser();
+  const { data: session, isPending } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const user = session?.user;
 
   const handleSignOut = async () => {
     await signOut({
-      callbackURL: afterSignOutUrl,
+      fetchOptions: {
+        onSuccess: () => {
+          window.location.href = afterSignOutUrl;
+        }
+      }
     });
   };
 
-  if (isLoading) {
+  if (isPending) {
     return (
       <div className="w-8 h-8 rounded-full bg-muted animate-pulse" />
     );

@@ -28,18 +28,19 @@ export function BetterAuthSignIn({ onSuccess, onSwitchToClerk }: BetterAuthSignI
     setError(null);
 
     try {
-      const result = await signIn({
+      const result = await signIn.email({
         email,
         password,
-        callbackURL: "/dashboard",
+        fetchOptions: {
+          onSuccess: () => {
+            setSuccess(true);
+            onSuccess?.();
+          },
+          onError: (error) => {
+            setError(error.toString() || "Sign in failed");
+          }
+        }
       });
-
-      if (result.error) {
-        setError(result.error.message || "Sign in failed");
-      } else {
-        setSuccess(true);
-        onSuccess?.();
-      }
     } catch (err) {
       setError("An unexpected error occurred");
     } finally {
